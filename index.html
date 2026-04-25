@@ -360,6 +360,43 @@
         .project-card:hover { transform: translateY(-4px); border-color: var(--accent); }
         .project-card:hover::before { opacity: 1; }
         .card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .card-header .card-icon { margin-bottom: 0; }
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            background: rgba(0, 212, 170, 0.12);
+            border: 1px solid rgba(0, 212, 170, 0.4);
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .live-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+            animation: pulse-dot 1.8s ease-in-out infinite;
+        }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.85); }
+        }
         .project-card h3 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.2rem;
@@ -391,6 +428,28 @@
             gap: 0.3rem;
         }
         .card-link:hover { gap: 0.6rem; }
+        .card-link-row {
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .card-link-secondary {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+        }
+        .card-link-secondary:hover { color: var(--text); }
+        .card-note {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 0.5rem;
+            margin-bottom: 0.6rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed rgba(108, 60, 225, 0.2);
+        }
 
         /* ===== EVIDENCE STRIP ===== */
         .evidence {
@@ -702,29 +761,41 @@
         </div>
 
         <div class="project-card">
-            <div class="card-icon">&#128187;</div>
-            <h3>TSI Trainer</h3>
-            <p>Browser-based TSI Assessment practice tool built with HTML and JavaScript. Designed to load fast, work on any device, and give students friction-free practice access.</p>
+            <div class="card-header">
+                <div class="card-icon">&#128187;</div>
+                <span class="live-badge">Live demo</span>
+            </div>
+            <h3>TSI Strategy Trainer</h3>
+            <p>Browser-based TSI Assessment practice tool built with HTML and JavaScript. Designed to load fast, work on any device, and give students friction-free practice access. A Google Apps Script version is deployed inside my Canvas course for grade tracking.</p>
             <div class="card-tags">
                 <span>HTML</span>
                 <span>JavaScript</span>
-                <span>Test Prep</span>
-                <span>Web App</span>
+                <span>Apps Script</span>
+                <span>Canvas</span>
             </div>
-            <a href="https://github.com/happypurple1/TSI-Trainer" target="_blank" rel="noopener" class="card-link">View on GitHub &#8594;</a>
+            <div class="card-link-row">
+                <a href="https://happypurple1.github.io/TSI-Trainer/" target="_blank" rel="noopener" class="card-link">Try the demo &#8594;</a>
+                <a href="https://github.com/happypurple1/TSI-Trainer" target="_blank" rel="noopener" class="card-link-secondary">View source</a>
+            </div>
         </div>
 
         <div class="project-card">
-            <div class="card-icon">&#127919;</div>
-            <h3>Interactive Math Tools</h3>
-            <p>Web-based visualizations for Algebra 2 concepts including cubic functions and inverse operations&mdash;the kind of embeddable activity a Canvas page needs to keep an asynchronous lesson interactive.</p>
+            <div class="card-header">
+                <div class="card-icon">&#127919;</div>
+                <span class="live-badge">Live demo</span>
+            </div>
+            <h3>Inverse Function Transformations</h3>
+            <p>Interactive React-based visualization for cubic and inverse function transformations. Originally built as a Google Apps Script tool to embed in Canvas pages; the standalone web version is the same activity students use in my Algebra 2 course.</p>
             <div class="card-tags">
-                <span>HTML</span>
-                <span>JavaScript</span>
+                <span>React</span>
                 <span>Interactive</span>
+                <span>Apps Script</span>
                 <span>Canvas-ready</span>
             </div>
-            <a href="https://github.com/happypurple1/Cubic-Inverses" target="_blank" rel="noopener" class="card-link">View on GitHub &#8594;</a>
+            <div class="card-link-row">
+                <a href="https://happypurple1.github.io/Cubic-Inverses/" target="_blank" rel="noopener" class="card-link">Try the demo &#8594;</a>
+                <a href="https://github.com/happypurple1/Cubic-Inverses" target="_blank" rel="noopener" class="card-link-secondary">View source</a>
+            </div>
         </div>
 
         <div class="project-card">
