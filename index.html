@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cynthia Goforth | Mechanical Engineering &amp; Data Analytics</title>
+    <title>Cynthia Goforth | Online Mathematics Instructor &amp; Curriculum Builder</title>
+    <meta name="description" content="Texas-certified mathematics educator with 14 years of teaching experience. Builds digital, TEKS-aligned Algebra 2 curriculum on Canvas, DeltaMath, Desmos, and LaTeX. Currently teaching at Amarillo High School.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -21,7 +22,6 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -65,7 +65,6 @@
             bottom: -10%; left: 30%;
             animation-delay: -14s;
         }
-
         @keyframes float {
             0%, 100% { transform: translate(0, 0) scale(1); }
             25% { transform: translate(30px, -40px) scale(1.05); }
@@ -98,16 +97,15 @@
             background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         nav .nav-links { display: flex; gap: 2rem; list-style: none; }
         nav .nav-links a {
-            color: var(--text-muted);
+            color: var(--text);
             text-decoration: none;
-            font-size: 0.9rem;
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 0.95rem;
             position: relative;
+            transition: color 0.2s ease;
         }
         nav .nav-links a:hover { color: var(--accent); }
         nav .nav-links a::after {
@@ -116,43 +114,49 @@
             bottom: -4px; left: 0;
             width: 0; height: 2px;
             background: var(--gradient-1);
-            transition: width 0.3s;
+            transition: width 0.3s ease;
         }
         nav .nav-links a:hover::after { width: 100%; }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            display: block;
+            width: 24px; height: 2px;
+            background: var(--text);
+        }
 
-        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-        .hamburger span { width: 25px; height: 2px; background: var(--text); transition: 0.3s; }
-
-        /* ===== SECTIONS ===== */
+        /* ===== LAYOUT ===== */
         section {
             position: relative;
             z-index: 1;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 5rem 2rem;
+            padding: 6rem 2rem 4rem;
         }
-
         .section-label {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             color: var(--accent);
-            margin-bottom: 0.75rem;
+            margin-bottom: 1rem;
         }
         .section-title {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            line-height: 1.2;
         }
         .section-subtitle {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 600px;
+            font-size: 1.05rem;
+            margin-bottom: 3rem;
+            max-width: 720px;
         }
 
         /* ===== HERO ===== */
@@ -162,231 +166,116 @@
             align-items: center;
             padding-top: 6rem;
         }
-        .hero-content { max-width: 700px; }
-        .hero .greeting {
-            font-size: 1.1rem;
+        .hero-content { max-width: 900px; }
+        .greeting {
+            font-family: 'Space Grotesk', sans-serif;
             color: var(--accent);
+            font-size: 1.05rem;
             font-weight: 500;
             margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards 0.2s;
+            letter-spacing: 1px;
         }
         .hero h1 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 800;
+            font-size: 4rem;
+            font-weight: 700;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards 0.4s;
         }
-        .hero h1 .gradient-text {
+        .gradient-text {
             background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        .hero .tagline {
-            font-size: 1.2rem;
+        .tagline {
+            font-size: 1.15rem;
             color: var(--text-muted);
             line-height: 1.7;
             margin-bottom: 2.5rem;
-            max-width: 550px;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards 0.6s;
+            max-width: 720px;
         }
-        .hero .cta-row {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease forwards 0.8s;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== BUTTONS ===== */
+        .cta-row { display: flex; gap: 1rem; flex-wrap: wrap; }
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.85rem 1.75rem;
-            border-radius: 50px;
+            padding: 0.95rem 1.6rem;
+            border-radius: 12px;
             font-weight: 600;
-            font-size: 0.95rem;
             text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            border: 1px solid transparent;
         }
         .btn-primary {
             background: var(--gradient-1);
-            color: #fff;
-            box-shadow: 0 4px 20px rgba(108, 60, 225, 0.4);
+            color: white;
         }
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(108, 60, 225, 0.5);
-        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(108, 60, 225, 0.4); }
         .btn-outline {
-            background: transparent;
+            border: 1px solid rgba(232, 228, 240, 0.2);
             color: var(--text);
-            border: 2px solid rgba(108, 60, 225, 0.4);
+            background: rgba(255, 255, 255, 0.02);
         }
-        .btn-outline:hover {
-            border-color: var(--primary-light);
-            background: rgba(108, 60, 225, 0.1);
-            transform: translateY(-2px);
-        }
+        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
 
-        /* ===== PROJECT CARDS ===== */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-        .project-card {
-            background: var(--dark-card);
-            border: 1px solid rgba(108, 60, 225, 0.12);
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.4s ease;
+        /* ===== FEATURED BANNER ===== */
+        .featured-banner {
             position: relative;
-            overflow: hidden;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            border-radius: 16px 16px 0 0;
-            opacity: 0;
-            transition: opacity 0.4s;
+        .banner-card {
+            background: linear-gradient(135deg, rgba(108, 60, 225, 0.18), rgba(0, 212, 170, 0.12));
+            border: 1px solid rgba(0, 212, 170, 0.3);
+            border-radius: 16px;
+            padding: 1.75rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
         }
-        .project-card:hover::before { opacity: 1; }
-        .project-card:nth-child(1)::before { background: var(--gradient-1); }
-        .project-card:nth-child(2)::before { background: var(--gradient-2); }
-        .project-card:nth-child(3)::before { background: var(--gradient-3); }
-        .project-card:nth-child(4)::before { background: linear-gradient(135deg, #FFD700, #FF6B9D); }
-        .project-card:nth-child(5)::before { background: linear-gradient(135deg, #00D4AA, #6C3CE1); }
-        .project-card:nth-child(6)::before { background: var(--gradient-2); }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(108, 60, 225, 0.3);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        .banner-card .pill {
+            display: inline-block;
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent);
+            background: rgba(0, 212, 170, 0.12);
+            padding: 0.3rem 0.7rem;
+            border-radius: 20px;
+            margin-bottom: 0.5rem;
         }
-        .project-card .card-icon {
-            width: 48px; height: 48px;
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 1.25rem;
-        }
-        .project-card:nth-child(1) .card-icon { background: rgba(108, 60, 225, 0.15); }
-        .project-card:nth-child(2) .card-icon { background: rgba(255, 107, 157, 0.15); }
-        .project-card:nth-child(3) .card-icon { background: rgba(0, 212, 170, 0.15); }
-        .project-card:nth-child(4) .card-icon { background: rgba(255, 215, 0, 0.15); }
-        .project-card:nth-child(5) .card-icon { background: rgba(0, 136, 255, 0.15); }
-        .project-card:nth-child(6) .card-icon { background: rgba(108, 60, 225, 0.15); }
-
-        .project-card h3 {
+        .banner-card h3 {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 1.25rem;
             font-weight: 600;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.35rem;
         }
-        .project-card p {
+        .banner-card p {
             color: var(--text-muted);
             font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.25rem;
-        }
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.25rem;
-        }
-        .card-tags span {
-            font-size: 0.75rem;
-            padding: 0.3rem 0.75rem;
-            border-radius: 50px;
-            background: rgba(108, 60, 225, 0.1);
-            color: var(--primary-light);
-            font-weight: 500;
-        }
-        .card-link {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            transition: gap 0.3s;
-        }
-        .card-link:hover { gap: 0.7rem; }
-
-        /* ===== SKILLS ===== */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-        }
-        .skill-group {
-            background: var(--dark-card);
-            border: 1px solid rgba(108, 60, 225, 0.1);
-            border-radius: 16px;
-            padding: 1.75rem;
-        }
-        .skill-group h3 {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        .skill-items {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        .skill-items span {
-            font-size: 0.85rem;
-            padding: 0.4rem 0.85rem;
-            border-radius: 8px;
-            background: rgba(108, 60, 225, 0.08);
-            color: var(--text-muted);
-            font-weight: 400;
-            transition: all 0.3s;
-        }
-        .skill-items span:hover {
-            background: rgba(108, 60, 225, 0.2);
-            color: var(--text);
+            line-height: 1.5;
         }
 
         /* ===== ABOUT ===== */
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.4fr 1fr;
             gap: 3rem;
-            margin-top: 2.5rem;
             align-items: start;
         }
-        .about-text {
+        .about-text p {
             color: var(--text-muted);
-            font-size: 1.05rem;
-            line-height: 1.8;
+            font-size: 1.02rem;
+            line-height: 1.75;
+            margin-bottom: 1.1rem;
         }
-        .about-text p + p { margin-top: 1rem; }
+        .about-text strong { color: var(--text); font-weight: 600; }
         .about-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -394,59 +283,231 @@
         }
         .stat-card {
             background: var(--dark-card);
-            border: 1px solid rgba(108, 60, 225, 0.1);
+            border: 1px solid rgba(108, 60, 225, 0.2);
             border-radius: 12px;
-            padding: 1.5rem;
+            padding: 1.5rem 1.25rem;
             text-align: center;
+            transition: all 0.25s ease;
         }
-        .stat-card .stat-num {
+        .stat-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+        .stat-num {
             font-family: 'Space Grotesk', sans-serif;
             font-size: 2rem;
             font-weight: 700;
             background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 0.35rem;
         }
-        .stat-card .stat-label {
-            font-size: 0.85rem;
+        .stat-label {
             color: var(--text-muted);
-            margin-top: 0.25rem;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== TOOLKIT ===== */
+        .toolkit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+        .tool-card {
+            background: var(--dark-card);
+            border: 1px solid rgba(108, 60, 225, 0.15);
+            border-radius: 14px;
+            padding: 1.5rem;
+            transition: all 0.25s ease;
+        }
+        .tool-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+        .tool-card .tool-name {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+        }
+        .tool-card .tool-desc {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        /* ===== PROJECTS ===== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 1.5rem;
+        }
+        .project-card {
+            background: var(--dark-card);
+            border: 1px solid rgba(108, 60, 225, 0.2);
+            border-radius: 16px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .project-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+        .project-card:hover::before { opacity: 1; }
+        .card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+        .project-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+        }
+        .project-card p {
+            color: var(--text-muted);
+            font-size: 0.94rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.1rem; }
+        .card-tags span {
+            font-size: 0.72rem;
+            padding: 0.25rem 0.6rem;
+            background: rgba(108, 60, 225, 0.18);
+            color: var(--primary-light);
+            border-radius: 20px;
+            font-weight: 500;
+        }
+        .card-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .card-link:hover { gap: 0.6rem; }
+
+        /* ===== EVIDENCE STRIP ===== */
+        .evidence {
+            background: linear-gradient(135deg, rgba(108, 60, 225, 0.08), rgba(0, 212, 170, 0.05));
+            border: 1px solid rgba(108, 60, 225, 0.25);
+            border-radius: 16px;
+            padding: 2.25rem;
+            margin-top: 2rem;
+        }
+        .evidence h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.25rem;
+        }
+        .evidence-item .ev-num {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+        .evidence-item .ev-text {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        /* ===== CERTS ===== */
+        .cert-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0.7rem;
+            margin-top: 1.25rem;
+        }
+        .cert-item {
+            background: var(--dark-card);
+            border: 1px solid rgba(108, 60, 225, 0.15);
+            border-left: 3px solid var(--accent);
+            border-radius: 8px;
+            padding: 0.85rem 1.1rem;
+            font-size: 0.92rem;
+            color: var(--text);
+        }
+        .cert-note {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .skill-group {
+            background: var(--dark-card);
+            border: 1px solid rgba(108, 60, 225, 0.15);
+            border-radius: 14px;
+            padding: 1.5rem;
+        }
+        .skill-group h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .skill-items { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .skill-items span {
+            font-size: 0.82rem;
+            padding: 0.35rem 0.75rem;
+            background: rgba(108, 60, 225, 0.12);
+            color: var(--text);
+            border-radius: 20px;
+            border: 1px solid rgba(108, 60, 225, 0.25);
         }
 
         /* ===== CONTACT ===== */
-        .contact-section {
-            text-align: center;
-            padding-bottom: 6rem;
-        }
+        .contact-section { text-align: center; padding-bottom: 6rem; }
+        .contact-section .section-title,
         .contact-section .section-subtitle {
-            margin: 0 auto 2rem;
+            margin-left: auto;
+            margin-right: auto;
         }
         .contact-links {
             display: flex;
-            justify-content: center;
             gap: 1rem;
+            justify-content: center;
             flex-wrap: wrap;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
         }
         .contact-link {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.85rem 1.75rem;
-            border-radius: 12px;
+            padding: 0.9rem 1.5rem;
             background: var(--dark-card);
-            border: 1px solid rgba(108, 60, 225, 0.15);
+            border: 1px solid rgba(108, 60, 225, 0.25);
+            border-radius: 12px;
             color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            transition: all 0.3s;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
         }
-        .contact-link:hover {
-            border-color: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
+        .contact-link:hover { border-color: var(--accent); transform: translateY(-2px); }
 
         /* ===== FOOTER ===== */
         footer {
@@ -477,6 +538,7 @@
             .about-content { grid-template-columns: 1fr; }
             .projects-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.5rem; }
+            .banner-card { flex-direction: column; align-items: flex-start; }
         }
 
         /* ===== SCROLL REVEAL ===== */
@@ -506,8 +568,10 @@
         <div class="logo">CG</div>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about">About</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
+            <li><a href="#toolkit">Toolkit</a></li>
+            <li><a href="#projects">Coursework</a></li>
+            <li><a href="#evidence">Outcomes</a></li>
+            <li><a href="#certs">Credentials</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
@@ -521,17 +585,18 @@
     <div class="hero-content">
         <p class="greeting">Hi, I'm Cynthia Goforth</p>
         <h1>
-            Mechanical Engineer<br>
-            <span class="gradient-text">& Data Analyst</span>
+            Online Mathematics Instructor<br>
+            <span class="gradient-text">&amp; Curriculum Builder</span>
         </h1>
         <p class="tagline">
-            Graduate researcher in Mechanical Engineering with expertise in data analytics,
-            engineering ethics, and cross-disciplinary problem solving. Building at the
-            intersection of engineering and education technology.
+            Texas-certified mathematics educator with 14 years of teaching experience across high school,
+            dual credit, and full-time community college instruction. I build digital, TEKS-aligned
+            Algebra 2 curriculum on Canvas, DeltaMath, Desmos, and LaTeX&mdash;and I use Python to
+            read student data fast enough to act on it.
         </p>
         <div class="cta-row">
-            <a href="#projects" class="btn btn-primary">View My Work &#8595;</a>
-            <a href="https://github.com/happypurple1" target="_blank" class="btn btn-outline">
+            <a href="#projects" class="btn btn-primary">See Coursework &#8595;</a>
+            <a href="https://github.com/happypurple1" target="_blank" rel="noopener" class="btn btn-outline">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                 GitHub
             </a>
@@ -539,167 +604,263 @@
     </div>
 </section>
 
+<!-- Featured Banner -->
+<div class="featured-banner reveal">
+    <div class="banner-card">
+        <div>
+            <span class="pill">Currently Pursuing</span>
+            <h3>Online Instructor &mdash; Amarillo ISD Online</h3>
+            <p>Bringing a Canvas-native curriculum stack, DeltaMath LTI integration, and data-driven instruction to a new full-time virtual program.</p>
+        </div>
+        <a href="#projects" class="btn btn-primary">Why I'm a Fit &#8594;</a>
+    </div>
+</div>
+
 <!-- About -->
 <section id="about" class="reveal">
-    <div class="section-label">About Me</div>
-    <div class="section-title">Engineer. Analyst. Builder.</div>
+    <div class="section-label">About</div>
+    <div class="section-title">Educator. Builder. Data-Driven.</div>
     <div class="about-content">
         <div class="about-text">
-            <p>I'm a Mechanical Engineering graduate student at the University of Texas with a unique background spanning mathematics education, data analytics, and applied research.</p>
-            <p>My graduate work focuses on engineering ethics, research methodology, and analytical frameworks like Cross-Impact Analysis. I bring a data-driven, detail-oriented approach to everything I work on.</p>
-            <p>I also build interactive web tools and work with Python, LaTeX, and modern web technologies to solve real-world problems.</p>
+            <p>I teach <strong>Algebra 2 honors and on-level</strong> sections at Amarillo High School, with a current cohort of 147 students. My classroom runs on the same digital stack a strong online program needs: Canvas LMS with DeltaMath Integral pushing grades back through LTI, Desmos for exploration, and LaTeX-set assessments shared across the department.</p>
+            <p>I built and lead a <strong>tiered TSI prep program</strong> with three parallel tracks&mdash;retake candidates, foundational support, and enrichment for students who already passed. I run my own statistical analysis in Python to figure out who is two points away from clearing the TSI graduation threshold and which interventions are actually moving the needle.</p>
+            <p>Online instruction isn't a pivot for me. Between full-time community college teaching, remote technical writing for the Texas Education Agency's IMRA process, and building a growing library of Canvas-compatible HTML lessons, it's an extension of what I already build.</p>
         </div>
         <div class="about-stats">
             <div class="stat-card">
-                <div class="stat-num">M.E.</div>
-                <div class="stat-label">Mechanical Engineering</div>
+                <div class="stat-num">14</div>
+                <div class="stat-label">Years Teaching</div>
             </div>
             <div class="stat-card">
-                <div class="stat-num">11</div>
-                <div class="stat-label">GitHub Projects</div>
+                <div class="stat-num">147</div>
+                <div class="stat-label">Current Algebra 2 Students</div>
             </div>
             <div class="stat-card">
-                <div class="stat-num">6+</div>
-                <div class="stat-label">Research Papers</div>
+                <div class="stat-num">5</div>
+                <div class="stat-label">Texas Educator Certs</div>
             </div>
             <div class="stat-card">
-                <div class="stat-num">UT</div>
-                <div class="stat-label">University of Texas</div>
+                <div class="stat-num">M.S.</div>
+                <div class="stat-label">ME @ Texas Tech (in progress)</div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Projects -->
+<!-- Toolkit -->
+<section id="toolkit" class="reveal">
+    <div class="section-label">Online Teaching Stack</div>
+    <div class="section-title">Tools I Use Every Day</div>
+    <div class="section-subtitle">The technology a modern virtual program runs on is the technology I already build with. Each tool below is part of my live Algebra 2 course.</div>
+
+    <div class="toolkit-grid">
+        <div class="tool-card">
+            <div class="tool-name">Canvas LMS</div>
+            <div class="tool-desc">Course pages built on inline-styled HTML (Canvas strips class-based CSS). Modules, assessments, and grade columns wired end to end.</div>
+        </div>
+        <div class="tool-card">
+            <div class="tool-name">DeltaMath Integral</div>
+            <div class="tool-desc">LTI-integrated grade passback to Canvas. Six-week bellwork progression and tiered TSI assignment tracks built inside DeltaMath.</div>
+        </div>
+        <div class="tool-card">
+            <div class="tool-name">Desmos</div>
+            <div class="tool-desc">Graphing exploration, classroom activities, and visual checks for understanding embedded directly in Canvas pages.</div>
+        </div>
+        <div class="tool-card">
+            <div class="tool-name">LaTeX</div>
+            <div class="tool-desc">Unit assessments and curriculum materials authored in LaTeX for clean mathematical typesetting and consistent department-wide handouts.</div>
+        </div>
+        <div class="tool-card">
+            <div class="tool-name">Python (Google Colab)</div>
+            <div class="tool-desc">Statistical analysis of SAT, TSI, and unit-assessment outcomes to identify intervention targets and validate what's working.</div>
+        </div>
+        <div class="tool-card">
+            <div class="tool-name">HTML / Inline Styling</div>
+            <div class="tool-desc">Hand-coded Canvas-compatible pages including a Friday Extension Choice Board for students who have already cleared TSI.</div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects / Coursework -->
 <section id="projects" class="reveal">
-    <div class="section-label">Portfolio</div>
-    <div class="section-title">Featured Projects</div>
-    <div class="section-subtitle">A selection of research, analysis, and development work.</div>
+    <div class="section-label">Coursework &amp; Curriculum</div>
+    <div class="section-title">What I've Built</div>
+    <div class="section-subtitle">A selection of the digital curriculum, assessments, and tools I've designed for live classrooms. All public materials are at github.com/happypurple1.</div>
 
     <div class="projects-grid">
         <div class="project-card">
-            <div class="card-icon">&#9881;</div>
-            <h3>Engineering Research Papers</h3>
-            <p>Academic papers from my ME graduate program including Cross-Impact Analysis of research fraud, dimensionless numbers analysis, and engineering ethics case studies.</p>
+            <div class="card-icon">&#128218;</div>
+            <h3>TEKS-Aligned Algebra 2 Curriculum</h3>
+            <p>A growing library of Algebra 2 materials aligned to Texas Essential Knowledge and Skills, covering both honors and on-level pacing. Authored in LaTeX with Canvas-ready exports.</p>
             <div class="card-tags">
-                <span>Research</span>
-                <span>Ethics</span>
-                <span>Cross-Impact Analysis</span>
+                <span>Algebra 2</span>
+                <span>TEKS</span>
                 <span>LaTeX</span>
+                <span>Differentiated</span>
             </div>
-            <a href="https://github.com/happypurple1/engineering-papers" target="_blank" class="card-link">View on GitHub &#8594;</a>
-        </div>
-
-        <div class="project-card">
-            <div class="card-icon">&#128202;</div>
-            <h3>Data Analytics Projects</h3>
-            <p>Python-based data analysis projects including data visualization, statistical analysis, and dataset preparation from my analytics training at UT.</p>
-            <div class="card-tags">
-                <span>Python</span>
-                <span>Jupyter</span>
-                <span>Data Viz</span>
-                <span>Statistics</span>
-            </div>
-            <a href="https://github.com/happypurple1/data-analytics-projects" target="_blank" class="card-link">View on GitHub &#8594;</a>
+            <a href="https://github.com/happypurple1/algebra2-curriculum" target="_blank" rel="noopener" class="card-link">View on GitHub &#8594;</a>
         </div>
 
         <div class="project-card">
             <div class="card-icon">&#128187;</div>
             <h3>TSI Trainer</h3>
-            <p>Interactive web application for TSI Assessment practice. Built with HTML and JavaScript to provide an accessible, browser-based study tool.</p>
+            <p>Browser-based TSI Assessment practice tool built with HTML and JavaScript. Designed to load fast, work on any device, and give students friction-free practice access.</p>
             <div class="card-tags">
                 <span>HTML</span>
                 <span>JavaScript</span>
+                <span>Test Prep</span>
                 <span>Web App</span>
-                <span>Ed-Tech</span>
             </div>
-            <a href="https://github.com/happypurple1/TSI-Trainer" target="_blank" class="card-link">View on GitHub &#8594;</a>
-        </div>
-
-        <div class="project-card">
-            <div class="card-icon">&#128208;</div>
-            <h3>TEKS-Aligned Algebra 2 Curriculum</h3>
-            <p>Comprehensive curriculum materials for Algebra 2 courses, aligned to Texas TEKS standards. Includes materials for both on-level and advanced tracks.</p>
-            <div class="card-tags">
-                <span>LaTeX</span>
-                <span>Curriculum Design</span>
-                <span>TEKS</span>
-            </div>
-            <a href="https://github.com/happypurple1/algebra2-curriculum" target="_blank" class="card-link">View on GitHub &#8594;</a>
-        </div>
-
-        <div class="project-card">
-            <div class="card-icon">&#128295;</div>
-            <h3>LaTeX Templates</h3>
-            <p>Reusable LaTeX and Overleaf source files for professional documents, academic papers, and curriculum materials.</p>
-            <div class="card-tags">
-                <span>LaTeX</span>
-                <span>Overleaf</span>
-                <span>Templates</span>
-            </div>
-            <a href="https://github.com/happypurple1/latex-templates" target="_blank" class="card-link">View on GitHub &#8594;</a>
+            <a href="https://github.com/happypurple1/TSI-Trainer" target="_blank" rel="noopener" class="card-link">View on GitHub &#8594;</a>
         </div>
 
         <div class="project-card">
             <div class="card-icon">&#127919;</div>
             <h3>Interactive Math Tools</h3>
-            <p>Web-based interactive visualizations for mathematical concepts including cubic functions and inverse operations.</p>
+            <p>Web-based visualizations for Algebra 2 concepts including cubic functions and inverse operations&mdash;the kind of embeddable activity a Canvas page needs to keep an asynchronous lesson interactive.</p>
             <div class="card-tags">
                 <span>HTML</span>
                 <span>JavaScript</span>
                 <span>Interactive</span>
+                <span>Canvas-ready</span>
             </div>
-            <a href="https://github.com/happypurple1/Cubic-Inverses" target="_blank" class="card-link">View on GitHub &#8594;</a>
+            <a href="https://github.com/happypurple1/Cubic-Inverses" target="_blank" rel="noopener" class="card-link">View on GitHub &#8594;</a>
+        </div>
+
+        <div class="project-card">
+            <div class="card-icon">&#128202;</div>
+            <h3>Data Analytics Projects</h3>
+            <p>Python-based analysis projects from my UT Austin Data Analytics post-graduate program. The same techniques I use to analyze SAT, TSI, and unit-assessment outcomes in my live classroom.</p>
+            <div class="card-tags">
+                <span>Python</span>
+                <span>Jupyter</span>
+                <span>Statistics</span>
+                <span>Data Viz</span>
+            </div>
+            <a href="https://github.com/happypurple1/data-analytics-projects" target="_blank" rel="noopener" class="card-link">View on GitHub &#8594;</a>
+        </div>
+
+        <div class="project-card">
+            <div class="card-icon">&#128221;</div>
+            <h3>LaTeX Templates</h3>
+            <p>Reusable LaTeX and Overleaf source for unit assessments, worksheets, and curriculum handouts. The typesetting backbone of materials I share across my department.</p>
+            <div class="card-tags">
+                <span>LaTeX</span>
+                <span>Overleaf</span>
+                <span>Templates</span>
+            </div>
+            <a href="https://github.com/happypurple1/latex-templates" target="_blank" rel="noopener" class="card-link">View on GitHub &#8594;</a>
+        </div>
+
+        <div class="project-card">
+            <div class="card-icon">&#9881;</div>
+            <h3>Engineering Research Papers</h3>
+            <p>Academic work from my M.S. in Mechanical Engineering at Texas Tech, including Cross-Impact Analysis of research integrity, dimensionless numbers, and engineering ethics case studies.</p>
+            <div class="card-tags">
+                <span>Research</span>
+                <span>Ethics</span>
+                <span>LaTeX</span>
+                <span>Texas Tech</span>
+            </div>
+            <a href="https://github.com/happypurple1/engineering-papers" target="_blank" rel="noopener" class="card-link">View on GitHub &#8594;</a>
         </div>
     </div>
+</section>
+
+<!-- Evidence / Outcomes -->
+<section id="evidence" class="reveal">
+    <div class="section-label">Outcomes</div>
+    <div class="section-title">What the Data Says</div>
+    <div class="section-subtitle">I run my own statistical analysis in Python because the data tells me where to push, who is two points away from clearing TSI, and which interventions are actually working.</div>
+
+    <div class="evidence">
+        <h3>April 2026 SAT &mdash; On-Level Cohort</h3>
+        <p style="color: var(--text-muted); line-height: 1.6;">My on-level Algebra 2 students outperformed comparison sections by an average of <strong style="color: var(--text);">28 points</strong> at a statistically significant margin. I traced the advantage to a structured prep week I had built and tested.</p>
+        <div class="evidence-grid">
+            <div class="evidence-item">
+                <div class="ev-num">+28</div>
+                <div class="ev-text">Average SAT point advantage over comparison sections (April 2026)</div>
+            </div>
+            <div class="evidence-item">
+                <div class="ev-num">p = 0.013</div>
+                <div class="ev-text">Statistical significance of the prep-week effect (Python analysis)</div>
+            </div>
+            <div class="evidence-item">
+                <div class="ev-num">3</div>
+                <div class="ev-text">Parallel tracks in my tiered TSI prep program: retake, support, enrichment</div>
+            </div>
+            <div class="evidence-item">
+                <div class="ev-num">147</div>
+                <div class="ev-text">Algebra 2 students currently on roster across honors and on-level sections</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Credentials -->
+<section id="certs" class="reveal">
+    <div class="section-label">Credentials</div>
+    <div class="section-title">Texas Educator Certifications</div>
+    <div class="section-subtitle">All certifications Standard, valid through 09/30/2030. Certification breadth lets a virtual program staff me flexibly across course needs and serve students with IEPs.</div>
+
+    <div class="cert-list">
+        <div class="cert-item">Mathematics, Grades 7&ndash;12</div>
+        <div class="cert-item">Mathematics / Physical Science / Engineering, Grades 6&ndash;12</div>
+        <div class="cert-item">Physics / Mathematics, Grades 7&ndash;12</div>
+        <div class="cert-item">Mathematics / Science, Grades 4&ndash;8</div>
+        <div class="cert-item">Special Education, Grades EC&ndash;12</div>
+    </div>
+    <p class="cert-note">Education: M.S. Mechanical Engineering (Texas Tech, in progress) &middot; M.S. Applied Mathematics (WTAMU) &middot; Post Graduate Program in Data Analytics (UT Austin) &middot; B.S. Mathematics (WTAMU)</p>
 </section>
 
 <!-- Skills -->
 <section id="skills" class="reveal">
     <div class="section-label">Expertise</div>
-    <div class="section-title">Skills & Tools</div>
+    <div class="section-title">Skills &amp; Tools</div>
 
     <div class="skills-grid">
         <div class="skill-group">
-            <h3>&#9881; Engineering</h3>
+            <h3>&#128187; Online &amp; Hybrid Instruction</h3>
             <div class="skill-items">
-                <span>Mechanical Engineering</span>
-                <span>Thermodynamics</span>
-                <span>Fluid Mechanics</span>
-                <span>Heat Transfer</span>
-                <span>Dimensionless Analysis</span>
-                <span>Research Methodology</span>
+                <span>Canvas LMS</span>
+                <span>LTI Integration</span>
+                <span>DeltaMath Integral</span>
+                <span>Desmos</span>
+                <span>Synchronous Sessions</span>
+                <span>Asynchronous Design</span>
+                <span>Netiquette</span>
             </div>
         </div>
         <div class="skill-group">
-            <h3>&#128202; Data & Analytics</h3>
+            <h3>&#128218; Curriculum &amp; Assessment</h3>
+            <div class="skill-items">
+                <span>TEKS Alignment</span>
+                <span>Differentiated Instruction</span>
+                <span>Tiered Intervention</span>
+                <span>SAT / TSI / AP Prep</span>
+                <span>Unit Assessment Design</span>
+                <span>IEP Accommodation</span>
+            </div>
+        </div>
+        <div class="skill-group">
+            <h3>&#128202; Data &amp; Analytics</h3>
             <div class="skill-items">
                 <span>Python</span>
-                <span>Jupyter Notebooks</span>
-                <span>Data Visualization</span>
+                <span>Jupyter / Colab</span>
                 <span>Statistical Analysis</span>
-                <span>Cross-Impact Analysis</span>
-                <span>Dataset Preparation</span>
+                <span>Data Visualization</span>
+                <span>SQL</span>
+                <span>Data-Informed Instruction</span>
             </div>
         </div>
         <div class="skill-group">
-            <h3>&#128187; Development</h3>
+            <h3>&#128296; Development &amp; Authoring</h3>
             <div class="skill-items">
                 <span>HTML / CSS</span>
                 <span>JavaScript</span>
-                <span>Git / GitHub</span>
+                <span>Inline-styled Canvas pages</span>
                 <span>LaTeX / Overleaf</span>
-                <span>Web Applications</span>
-            </div>
-        </div>
-        <div class="skill-group">
-            <h3>&#128218; Research & Writing</h3>
-            <div class="skill-items">
-                <span>Academic Papers</span>
-                <span>Technical Writing</span>
-                <span>Engineering Ethics</span>
-                <span>Literature Review</span>
-                <span>Citation Management</span>
+                <span>Git / GitHub</span>
             </div>
         </div>
     </div>
@@ -709,22 +870,22 @@
 <section id="contact" class="contact-section reveal">
     <div class="section-label">Get in Touch</div>
     <div class="section-title">Let's Connect</div>
-    <div class="section-subtitle">I'm currently pursuing my M.E. in Mechanical Engineering and open to opportunities in engineering, data analytics, and technical roles.</div>
+    <div class="section-subtitle">Available for online and hybrid mathematics instruction, curriculum design contracts, and TSI / SAT prep program builds. Based in Amarillo, Texas.</div>
 
     <div class="contact-links">
         <a href="mailto:cynthiasgoforth@gmail.com" class="contact-link">
             &#9993; cynthiasgoforth@gmail.com
         </a>
-        <a href="https://github.com/happypurple1" target="_blank" class="contact-link">
+        <a href="https://github.com/happypurple1" target="_blank" rel="noopener" class="contact-link">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            GitHub
+            github.com/happypurple1
         </a>
     </div>
 </section>
 
 <!-- Footer -->
 <footer>
-    <p>&copy; 2026 Cynthia Goforth. Built with purpose.</p>
+    <p>&copy; 2026 Cynthia Goforth &middot; Online Mathematics Instructor &middot; Amarillo, Texas</p>
 </footer>
 
 <!-- Scroll Reveal Script -->
